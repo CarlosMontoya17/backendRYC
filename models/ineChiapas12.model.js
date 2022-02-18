@@ -12,7 +12,7 @@ module.exports = (sequelize, Sequelize) => {
     materno: {
       type: Sequelize.STRING
     },
-    fechanac: {
+    fecnac: {
       type: Sequelize.STRING
     },
     sexo: {
@@ -66,6 +66,16 @@ module.exports = (sequelize, Sequelize) => {
     curp: {
       type: Sequelize.STRING
     },
+    nombreEntidad: {
+      type: Sequelize.STRING
+    },
+    nombreMunicipio: {
+      type: Sequelize.STRING
+    },
+    namefull: {
+      type: Sequelize.STRING
+    },
+
   },{
   freezeTableName: true
   });
