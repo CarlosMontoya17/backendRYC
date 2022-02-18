@@ -1,4 +1,4 @@
-const controller = require("../controllers/inechiapas12.controller");
+const controller = require("../controllers/ineChiapas12.controller");
 
 module.exports = function(app) {
   app.use(function(req, res, next) {
@@ -13,16 +13,4 @@ module.exports = function(app) {
     "/api/db/ineChiapas12/get/direccion/:curp",
     controller.getDireccion
   );
-
-  app.get(
-    "/api/db/ineChiapas12/findAll",
-    controller.getAll
-  );
-
-  app.get(
-    "/api/db/ineChiapas12/getByCond/:dat",
-    controller.getByCond
-  );
-
-
 };

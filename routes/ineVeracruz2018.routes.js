@@ -1,4 +1,4 @@
-const controller = require("../controllers/ineveracruz2018.controller");
+const controller = require("../controllers/ineVeracruz2018.controller");
 
 module.exports = function(app) {
   app.use(function(req, res, next) {
@@ -10,7 +10,7 @@ module.exports = function(app) {
   });
 
   app.get(
-    "/api/db/ineveracruz2018/get/direccion/:curp",
+    "/api/db/ineVeracruz2018/get/direccion/:curp",
     controller.getDireccionVeracruz
   );
 
