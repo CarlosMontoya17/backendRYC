@@ -25,7 +25,7 @@ exports.signup = (req, res) => {
 };
 
 exports.signin = (req, res) => {
-  console.log(bcrypt.hashSync(req.body.password, 8))
+  //console.log(bcrypt.hashSync(req.body.password, 8))
   User.findOne({
     where: {
       username: req.body.username
@@ -36,7 +36,7 @@ exports.signin = (req, res) => {
       return res.status(404).send({ message: "User Not found." });
     }
 
-    console.log(bcrypt.hashSync(req.body.password, 8));
+    //console.log(bcrypt.hashSync(req.body.password, 8));
 
     var passwordIsValid = bcrypt.compareSync(
       req.body.password,
