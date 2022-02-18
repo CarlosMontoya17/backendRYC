@@ -1,11 +1,11 @@
 const db = require("../models");
-const ineVeracruz2018 = db.ineVeracruz2018;
+const ineveracruz2018 = db.ineveracruz2018;
 const municipiosChiapas = db.municipiosChiapas;
 const Op = db.Sequelize.Op;
 
 
 exports.getDireccionVeracruz = (req, res) => {
-  ineVeracruz2018.findOne({
+  ineveracruz2018.findOne({
     attributes: ['calle', 'int', 'ext', 'cp', 'e', 'm'],
     where: { curp: req.params.curp }
   }).then(data => {

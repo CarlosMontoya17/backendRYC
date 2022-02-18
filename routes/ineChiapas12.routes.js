@@ -13,4 +13,16 @@ module.exports = function(app) {
     "/api/db/ineChiapas12/get/direccion/:curp",
     controller.getDireccion
   );
+
+  app.get(
+    "/api/db/ineChiapas12/findAll",
+    controller.getAll
+  );
+
+  app.get(
+    "/api/db/ineChiapas12/getByCond/:dat",
+    controller.getByCond
+  );
+
+
 };

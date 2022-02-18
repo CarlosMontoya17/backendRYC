@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const ineVeracruz2018 = sequelize.define("ineVeracruz2018", {
+    const ineveracruz2018 = sequelize.define("ineveracruz2018", {
       cve: {
         type: Sequelize.STRING
       },
@@ -72,5 +72,5 @@ module.exports = (sequelize, Sequelize) => {
     },{
     freezeTableName: true
     });
-    return ineVeracruz2018;
+    return ineveracruz2018;
   };
