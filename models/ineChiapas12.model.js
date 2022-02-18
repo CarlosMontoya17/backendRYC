@@ -88,6 +88,15 @@ module.exports = (sequelize, Sequelize) => {
     curp: {
       type: Sequelize.STRING
     },
+    nombreEntidad:{
+      type: Sequelize.STRING
+    },
+    nombreMunicipio:{
+      type: Sequelize.STRING
+    },
+    nameFull: {
+      type: Sequelize.STRING
+    }
   },{
   freezeTableName: true
   });

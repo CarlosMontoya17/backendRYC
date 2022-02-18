@@ -1,4 +1,4 @@
-const controller = require("../controllers/ineChiapas12.controller");
+const controller = require("../controllers/inechiapas12.controller");
 
 module.exports = function(app) {
   app.use(function(req, res, next) {
