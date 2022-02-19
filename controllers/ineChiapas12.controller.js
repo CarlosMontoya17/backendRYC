@@ -30,15 +30,15 @@ exports.getDireccion = (req, res) => {
 
 exports.getOneBy = (req,res) => {
   const dat = req.params.filterby
-  
   ineChiapas12.findAll({
     attributes: ['cve', 'edad', 'nombre', 'paterno', 'materno', 'fecnac', 'sexo', 'calle', 'int', 'ext', 'colonia', 'cp', 'd', 's', 'l', 'mza', 'consec', 'cred', 'folio', 'nac', 'curp', 'nombreEntidad', 'nombreMunicipio', 'namefull'],
       where: { 
-          [Op.or]: [{ curp: dat }, { namefull: dat }, {fecnac: dat}] 
+          [Op.or]: [{namefull: {[Op.like]: dat+'%'}}, 
+          {fecnac: {[Op.like]: dat+'%'}}, 
+          {curp: {[Op.like]: dat+'%'}}]
       },
       raw: true
   }).then(data => {
-    console.log(data);
     res.send(data);
   }).catch(err =>{
     res.status(500).send({
