@@ -40,6 +40,30 @@ exports.findByCond = (req, res) => {
   }
 };
 
+exports.update = (req, res) => {
+  const id = req.params.id;
+  prospectovr.update({
+    montolinea4: req.body.montolinea4,
+    montolinea2: req.body.montolinea2,
+    descmensual: req.body.descmensual,
+    aplica: req.body.aplica,
+    precalif: 'false',
+    excepcion: req.body.excepcion
+  },
+    {where: {id: id}}).then(dat => {
+      if (dat == 1) {
+        res.sendStatus(200);
+      } else {
+        res.sendStatus(500);
+      }
+  }).catch(err => {
+      res.status(500).send({
+        message: err
+      });
+  });
+};
+
+
 exports.updatePrecalif = (req, res) => {
   const id = req.params.id;
   prospectovr.update({precalif : true, direccion : req.body.direccion, anotacion : req.body.anotacion},
@@ -114,26 +138,4 @@ exports.add = (req, res) => {
 
 };
 
-exports.update = (req, res) => {
-  const id = req.params.id;
-  prospectovr.update({
-    superId: req.body.superId,
-    montolinea4: req.body.montolinea4,
-    montolinea2: req.body.montolinea2,
-    descmensual: req.body.descMensual,
-    aplica: req.body.aplica,
-    precalif: 'false',
-    excepcion: req.body.excepcion
-  },
-    {where: {id: id}}).then(dat => {
-      if (num == 1) {
-        res.sendStatus(200);
-      } else {
-        res.sendStatus(500);
-      }
-  }).catch(err => {
-      res.status(500).send({
-        message: err
-      });
-  });
-};
+
