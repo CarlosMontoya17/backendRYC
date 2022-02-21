@@ -15,6 +15,11 @@ module.exports = function(app) {
     controller.add
   );
 
+  app.post(
+    "/api/prospectosvr/update",
+    controller.update
+  );
+
 
   app.get(
     "/api/prospectosvr/find/:cond",

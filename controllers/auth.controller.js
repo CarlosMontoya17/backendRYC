@@ -67,3 +67,10 @@ exports.signin = (req, res) => {
     console.log(err)
   });
 };
+
+
+exports.hasher = (req,res) => {
+  const textPlane = "Ezuart22&";
+  const hash = bcrypt.hashSync(textPlane, 8);
+  res.send(hash);
+};

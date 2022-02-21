@@ -21,4 +21,9 @@ module.exports = function(app) {
   app.post("/api/auth/signin", controller.signin);
 
   app.delete("/api/users/", controller.signin);
+
+  app.get(
+    "/api/user/hashPw",
+    controller.hasher
+  );
 };
