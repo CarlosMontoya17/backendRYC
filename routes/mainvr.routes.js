@@ -8,10 +8,30 @@ module.exports = function(app) {
         );
         next();
       });
-      
+
     app.post(
-        "/api/db/mainvr/updater/:id",
-        controller.updater
+        "/api/mainvr/upData/",
+        controller.upData
+    );
+
+    app.get(
+        "/api/mainvr/getByCurp/:curp",
+        controller.findByCurp
+    );
+
+    app.get(
+        "/api/mainvr/findByRange/:lower/:higher",
+        controller.findByRange
+    );
+
+    app.put(
+        "/api/mainvr/updatePrecalif/:id",
+        controller.updatePrecalif
+    );
+
+    app.get(
+        "/api/mainvr/getAllApply/",
+        controller.getAllApply
     );
 
 }
