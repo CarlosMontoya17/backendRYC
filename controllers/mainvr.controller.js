@@ -28,12 +28,7 @@ exports.findByCurp = (req, res) => {
         where: {curp: curp},
         raw: true
     }).then(data =>{
-        if(data == 1){
-            res.sendStatus(200);
-        }
-        else{ 
-            res.sendStatus(500);
-        }
+        res.send(data);
     }).catch(error => {
         res.status(500).send({
             message:error

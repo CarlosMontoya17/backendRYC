@@ -38,4 +38,5 @@ db.ineChiapas12 = require("../models/ineChiapas12.model.js")(sequelize, Sequeliz
 db.inenl= require("../models/inenl.model.js")(sequelize, Sequelize);
 db.ineVeracruz2018= require("../models/ineVeracruz2018.model.js")(sequelize, Sequelize);
 db.mainvr = require("../models/mainvr.model.js")(sequelize, Sequelize);
+db.mainch = require("../models/mainch.model.js")(sequelize, Sequelize);
 module.exports = db;

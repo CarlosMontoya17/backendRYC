@@ -66,3 +66,4 @@ require('./routes/ineChiapas12.routes')(app);
 require('./routes/ineVeracruz2018.routes')(app);
 require('./routes/inenl.routes')(app);
 require('./routes/mainvr.routes')(app);
+require('./routes/mainch.routes')(app);
