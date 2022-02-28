@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const municipioschiapas = sequelize.define("municipioschiapas", {
+  const municipiosChiapas = sequelize.define("municipiosChiapas", {
     entidad: {
       type: Sequelize.INTEGER
     },
@@ -13,5 +13,5 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     }
   });
-  return municipioschiapas;
+  return municipiosChiapas;
 };
