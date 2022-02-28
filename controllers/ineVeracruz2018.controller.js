@@ -7,7 +7,7 @@ const Op = db.Sequelize.Op;
 exports.getDireccionVeracruz = (req, res) => {
   ineVeracruz2018.findOne({
     attributes: ['calle', 'int', 'ext', 'cp', 'e', 'm'],
-    where: { curp: req.params.curp }
+    where: { curp: {[Op.like]: req.params.curp+'%'} }
   }).then(data => {
     municipiosChiapas.findOne({
       attributes: ['nombreEntidad', 'nombreMunicipio'],
