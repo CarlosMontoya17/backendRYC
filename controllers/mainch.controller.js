@@ -24,6 +24,22 @@ exports.upData = (req, res) => {
 };
 
 //Quoters by priority
+    //Give Municipality
+exports.giveMunicipality = (req, res) => {
+    mainch.findAll({
+        attributes: [
+            [Sequelize.fn('DISTINCT', Sequelize.col('nombremunicipio')) ,'nombremunicipio']
+        ],
+        where: { nombremunicipio: {[Op.not]: null} }
+    }).then(data =>{
+        res.send(data);
+    }).catch(err =>{
+        res.status(500).send({
+            message: err
+        });
+    });
+}
+
     //Give Enterprisses
 exports.giveEnterprisses = (req, res) => {
     mainch.findAll({
@@ -38,8 +54,6 @@ exports.giveEnterprisses = (req, res) => {
         });
     });
 };
-
-
 
     //Verify nothing is running
 exports.verifyQuoter = (req,res) => {

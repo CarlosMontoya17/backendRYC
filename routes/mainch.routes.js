@@ -15,6 +15,11 @@ module.exports = function(app) {
     );
     
 //Quoter
+    //Give Municipality
+    app.get(
+        "/api/mainch/giveMunicipality/",
+        controller.giveMunicipality
+    );
     //Give Enterprises
     app.get(
         "/api/mainch/giveEnterprises/",

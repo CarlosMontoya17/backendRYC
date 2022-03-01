@@ -11,11 +11,11 @@ exports.getDireccionVeracruz = (req, res) => {
     where: { curp: {[Op.like]: curp+'%'} }
   }).then(data => {
     municipiosChiapas.findOne({
-      attributes: ['nombreEntidad', 'nombreMunicipio'],
+      attributes: ['nombreEntidad', 'nombremunicipio'],
       where: { entidad: data.e, municipio: data.m }
     }).then(data2 => {
       data.e = data2.nombreEntidad;
-      data.m = data2.nombreMunicipio;
+      data.m = data2.nombremunicipio;
       res.send(data);
     }).catch(err => {
       res.status(500).send({
