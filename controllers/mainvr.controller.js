@@ -13,7 +13,12 @@ exports.upData = (req, res) => {
         excepcion: req.body.excepcion,
         precalif: 'false'
     }, {where: {id: id }}).then(data => {
-        res.sendStatus(200);
+        if(data == 1){
+            res.sendStatus(200);
+        }   
+        else{
+            res.sendStatus(500);
+        }
     }).catch(error =>{
         res.status(500).send({
             message:error
