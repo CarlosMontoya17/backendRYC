@@ -30,6 +30,11 @@ module.exports = function(app) {
         "/api/mainch/prioryData/:cond",
         controller.prioryData
     );
+    //Give Counts
+    app.get(
+        "/api/mainch/giveCounts/:municipality/:enterprise/:salary",
+        controller.verifyQuoter
+    );
 
     app.get(
         "/api/mainch/getByCurp/:curp",

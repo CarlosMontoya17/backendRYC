@@ -60,12 +60,14 @@ exports.giveEnterprisses = (req, res) => {
     });
 };
 
-    //Verify nothing is running
+    //Give Counts
 exports.verifyQuoter = (req,res) => {
-    user = req.params.user;
-    mainch.findOne({
-        attributes: ['id', 'priority', 'aplica'],
-        where: {priority: user}
+    municipality = req.params.municipality;
+    enterprise = req.params.enterprise;
+    salary = req.params.salary;
+    mainch.findAndCountAll({
+        attributes: ["id", "aplica", "precalif"],
+        where: { nombremunicipio: {[Op.like]: municipality+'%'}, nom_pat: {[Op.like]: enterprise+'%'}, sal_base: {[Op.like]: '%'+salary+'%'}  }
     }).then(data => {
         res.send(data);
     }).catch(err => {
