@@ -45,7 +45,7 @@ exports.findByCurp = (req, res) => {
 //Encontrar por Rango de asignación
 exports.findByRange = (req, res) => {
     mainvr.findAll({
-        attributes: ['nom_aseg', 'curp', 'calle','int','ext','colonia', 'cp', 'nombreentidad','nombremunicipio'],
+        attributes: ['id','nom_aseg', 'curp', 'calle','int','ext','colonia', 'cp', 'nombreentidad','nombremunicipio'],
         where: {aplica: 'si', precalif: 'false'},
         order: [
             ['id', 'ASC']
