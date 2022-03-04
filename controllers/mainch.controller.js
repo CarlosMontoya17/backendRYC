@@ -170,7 +170,7 @@ exports.findByRange = (req, res) => {
     const lower = req.params.lower;
     const higher = req.params.higher;
     mainch.findAll({
-        attributes: ['nom_aseg', 'curp', 'calle', 'int', 'ext', 'colonia', 'cp', 'nombreentidad', 'nombremunicipio'],
+        attributes: ['id', 'nom_aseg', 'curp', 'calle', 'int', 'ext', 'colonia', 'cp', 'nombreentidad', 'nombremunicipio'],
         where: { aplica: 'si', precalif: 'false' },
         offset: lower, limit: higher
     }).then(data => {
