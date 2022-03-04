@@ -65,16 +65,32 @@ exports.verifyQuoter = (req,res) => {
     municipality = req.params.municipality;
     enterprise = req.params.enterprise;
     salary = req.params.salary;
-    mainch.findAndCountAll({
-        attributes: ["id", "aplica", "precalif"],
-        where: { nombremunicipio: {[Op.like]: municipality+'%'}, nom_pat: {[Op.like]: enterprise+'%'}, sal_base: {[Op.like]: '%'+salary+'%'}  }
-    }).then(data => {
-        res.send(data);
-    }).catch(err => {
-        res.status(500).send({
-            message: err
+    if(enterprise == 'TODO'){
+        mainch.findAndCountAll({
+            attributes: ["id", "aplica", "precalif"],
+            where: { nombremunicipio: {[Op.like]: municipality+'%'}, sal_base: {[Op.like]: '%'+salary+'%'}  }
+        }).then(data => {
+            res.send(data);
+        }).catch(err => {
+            res.status(500).send({
+                message: err
+            });
         });
-    });
+    }
+
+    else{
+        mainch.findAndCountAll({
+            attributes: ["id", "aplica", "precalif"],
+            where: { nombremunicipio: {[Op.like]: municipality+'%'}, nom_pat: {[Op.iRegexp]: enterprise}, sal_base: {[Op.like]: '%'+salary+'%'}  }
+        }).then(data => {
+            res.send(data);
+        }).catch(err => {
+            res.status(500).send({
+                message: err
+            });
+        });
+    }
+    
 };
     //Futuros Cambios
     //Setup Priory
