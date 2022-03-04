@@ -1,4 +1,3 @@
-const req = require("express/lib/request");
 const db = require("../models");
 const prospectovr = db.prospectovr;
 const Op = db.Sequelize.Op;

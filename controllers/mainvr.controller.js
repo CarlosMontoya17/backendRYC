@@ -39,16 +39,18 @@ exports.findByCurp = (req, res) => {
             message:error
         });
     });
-};
+};        
+
 
 //Encontrar por Rango de asignación
 exports.findByRange = (req, res) => {
-    const lower = req.params.lower;
-    const higher = req.params.higher;
     mainvr.findAll({
         attributes: ['nom_aseg', 'curp', 'calle','int','ext','colonia', 'cp', 'nombreentidad','nombremunicipio'],
         where: {aplica: 'si', precalif: 'false'},
-        offset: lower, limit: higher
+        order: [
+            ['id', 'ASC']
+        ],
+        offset: req.params.lower, limit: req.params.higher
       }).then(data =>{
         res.send(data);
     }).catch(error => {
