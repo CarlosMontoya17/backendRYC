@@ -120,7 +120,7 @@ exports.prioryData = (req, res) => {
     else{
         mainch.update(
             { priority: user },
-            { where: { nombremunicipio: municipio, empresa: {[Op.like]:  '%'+empresa+'%' } , sal_base: { [Op.like]: '%' + salario + '%' }}}
+            { where: { nombremunicipio: municipio, nom_pat: {[Op.like]:  '%'+empresa+'%' } , sal_base: { [Op.like]: '%' + salario + '%' }}}
         ).then(data => {
             if (data != 0) {
                 res.sendStatus(200);
