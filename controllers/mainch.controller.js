@@ -94,7 +94,7 @@ exports.verifyQuoter = (req, res) => {
 };
 //Setup Priory
 exports.prioryData = (req, res) => {
-    const user = req.req.username;
+    const user = req.params.username;
     const municipio = req.body.byMun;
     const empresa = req.body.byEnterprise;
     const salario = req.body.bySalary;
