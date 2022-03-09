@@ -27,7 +27,7 @@ module.exports = function(app) {
     );
     //Priory
     app.put(
-        "/api/mainch/prioryData/:cond",
+        "/api/mainch/prioryData/:username",
         controller.prioryData
     );
     //Give Counts

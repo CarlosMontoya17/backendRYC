@@ -29,46 +29,46 @@ exports.upData = (req, res) => {
 };
 
 //Quoters by priority
-    //Give Municipality
+//Give Municipality
 exports.giveMunicipality = (req, res) => {
     mainch.findAll({
         attributes: [
-            [Sequelize.fn('DISTINCT', Sequelize.col('nombremunicipio')) ,'nombremunicipio']
+            [Sequelize.fn('DISTINCT', Sequelize.col('nombremunicipio')), 'nombremunicipio']
         ],
-        where: { nombremunicipio: {[Op.not]: null} }
-    }).then(data =>{
+        where: { nombremunicipio: { [Op.not]: null } }
+    }).then(data => {
         res.send(data);
-    }).catch(err =>{
+    }).catch(err => {
         res.status(500).send({
             message: err
         });
     });
 }
 
-    //Give Enterprisses
+//Give Enterprisses
 exports.giveEnterprisses = (req, res) => {
     mainch.findAll({
         attributes: [
-            [Sequelize.fn('DISTINCT', Sequelize.col('nom_pat')) ,'nom_pat']
+            [Sequelize.fn('DISTINCT', Sequelize.col('nom_pat')), 'nom_pat']
         ]
-    }).then(data =>{
+    }).then(data => {
         res.send(data);
-    }).catch(err =>{
+    }).catch(err => {
         res.status(500).send({
             message: err
         });
     });
 };
 
-    //Give Counts
-exports.verifyQuoter = (req,res) => {
+//Give Counts
+exports.verifyQuoter = (req, res) => {
     municipality = req.params.municipality;
     enterprise = req.params.enterprise;
     salary = req.params.salary;
-    if(enterprise == 'TODO'){
+    if (enterprise == 'TODO') {
         mainch.findAndCountAll({
             attributes: ["id", "aplica", "precalif"],
-            where: { nombremunicipio: {[Op.like]: municipality+'%'}, sal_base: {[Op.like]: '%'+salary+'%'}  }
+            where: { nombremunicipio: { [Op.like]: municipality + '%' }, sal_base: { [Op.like]: '%' + salary + '%' } }
         }).then(data => {
             res.send(data);
         }).catch(err => {
@@ -78,12 +78,56 @@ exports.verifyQuoter = (req,res) => {
         });
     }
 
-    else{
+    else {
         mainch.findAndCountAll({
             attributes: ["id", "aplica", "precalif"],
-            where: { nombremunicipio: {[Op.like]: municipality+'%'}, nom_pat: {[Op.iRegexp]: enterprise}, sal_base: {[Op.like]: '%'+salary+'%'}  }
+            where: { nombremunicipio: { [Op.like]: municipality + '%' }, nom_pat: { [Op.iRegexp]: enterprise }, sal_base: { [Op.like]: '%' + salary + '%' } }
         }).then(data => {
             res.send(data);
+        }).catch(err => {
+            res.status(500).send({
+                message: err
+            });
+        });
+    }
+
+};
+//Setup Priory
+exports.prioryData = (req, res) => {
+    const user = req.req.username;
+    const municipio = req.body.byMun;
+    const empresa = req.body.byEnterprise;
+    const salario = req.body.bySalary;
+
+    if(empresa == "TODO"){
+        mainch.update(
+            { priority: user },
+            { where: { nombremunicipio: municipio, sal_base: { [Op.like]: '%' + salario + '%' }}}
+        ).then(data => {
+            if (data != 0) {
+                res.sendStatus(200);
+            }
+            else {
+                res.sendStatus(500);
+            }
+        }).catch(err => {
+            res.status(500).send({
+                message: err
+            });
+        }); 
+    }
+
+    else{
+        mainch.update(
+            { priority: user },
+            { where: { nombremunicipio: municipio, empresa: {[Op.like]:  '%'+empresa+'%' } , sal_base: { [Op.like]: '%' + salario + '%' }}}
+        ).then(data => {
+            if (data != 0) {
+                res.sendStatus(200);
+            }
+            else {
+                res.sendStatus(500);
+            }
         }).catch(err => {
             res.status(500).send({
                 message: err
@@ -92,59 +136,7 @@ exports.verifyQuoter = (req,res) => {
     }
     
 };
-    //Futuros Cambios
-    //Setup Priory
-exports.prioryData = (req, res) => {
-    const cond = req.params.cond;
-    const user = req.body.byUser;
-    const dat = req.body.dat;
-    if (cond == "MUNICIPALITY") {
-        mainch.update(
-            { priority: user },
-            {
-                where:
-                    { nombremunicipio: dat }
-            }
-        ).then(data => {
-            if (data == 0) {
-                res.sendStatus(500);
-            }
-            else {
-                res.sendStatus(200);
-            }
-        }).catch(error => {
-            res.status(500).send({
-                message: error
-            });
-        });
 
-    }
-    else if (cond == "SALARY") {
-        // dat = Min
-        //Max
-        const subdat = req.body.sdat;    
-        mainch.update(
-            { priority: user },
-            {
-                where:
-                    { [Op.and]: [{ salario: {[Op.between]: [dat,subdat]} }, { aplica: null }] }
-            }
-        ).then(data => {
-            if (data == 0) {
-                res.sendStatus(500);
-            }
-            else {
-                res.sendStatus(200);
-            }
-
-        }).catch(error => {
-            res.status(500).send({
-                message: error
-            });
-        });
-    }
-};
-    //Checkpoint Quoter
 
 
 
