@@ -141,7 +141,10 @@ exports.getPriory = (req, res) => {
     const username = req.params.username;
     mainch.findAll({ 
         attributes: ['nom_aseg','aplica', 'montolinea4','montolinea2', 'descmensual', 'excepcion', 'nombremunicipio', 'nom_pat', 'salario'],
-        where: {priority: username}
+        where: {priority: username},
+        order: [
+            ['id', 'ASC']
+        ]
     }).then(data => {
         res.send(data);
     }).catch(err => {
