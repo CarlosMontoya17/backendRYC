@@ -30,6 +30,11 @@ module.exports = function(app) {
         "/api/mainch/prioryData/:username",
         controller.prioryData
     );
+    //Give me priority in process o finished
+    app.get(
+        "/api/mainch/getPriorityList/:username",
+        controller.getPriory
+    );
     //Give Counts
     app.get(
         "/api/mainch/giveCounts/:municipality/:enterprise/:salary",
