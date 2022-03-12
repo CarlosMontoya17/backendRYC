@@ -40,7 +40,12 @@ module.exports = function(app) {
         "/api/mainch/giveCounts/:municipality/:enterprise/:salary",
         controller.verifyQuoter
     );
-
+    //ReloadPriory
+    app.put(
+        "/api/mainch/reloadPriory/:id",
+        controller.reloadPriory
+    );
+//Others Actions
     app.get(
         "/api/mainch/getByCurp/:curp",
         controller.findByCurp

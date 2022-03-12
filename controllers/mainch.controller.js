@@ -154,6 +154,25 @@ exports.getPriory = (req, res) => {
     });
 };
 
+exports.reloadPriory = (req, res) => {
+    const id = req.params.id;
+    mainch.update(
+        {aplica: null, precalif: null},
+        {where: {id: id }}
+    ).then(data => {
+        if (data != 0) {
+            res.sendStatus(200);
+        }
+        else {
+            res.sendStatus(500);
+        }
+    }).catch(err =>{
+        res.status(500).send({
+            message: err
+        });
+    });
+};
+
 
 
 
