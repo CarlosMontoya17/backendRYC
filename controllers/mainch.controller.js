@@ -156,8 +156,9 @@ exports.getPriory = (req, res) => {
 
 exports.reloadPriory = (req, res) => {
     const id = req.params.id;
+    const username = req.body.username;
     mainch.update(
-        {aplica: null, precalif: null},
+        {aplica: null, precalif: null, priority: username},
         {where: {id: id }}
     ).then(data => {
         if (data != 0) {
