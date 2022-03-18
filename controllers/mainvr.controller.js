@@ -66,6 +66,7 @@ exports.updatePrecalif = (req, res) => {
     mainvr.update({
         liga: req.body.liga,
         anotacion: req.body.anotacion,
+        pastedby: req.body.pastedby,
         precalif: 'true'
     },{where: {id: id }}).then(data => {
         if(data == 1){
