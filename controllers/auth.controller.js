@@ -70,7 +70,7 @@ exports.signin = (req, res) => {
 
 
 exports.hasher = (req,res) => {
-  const textPlane = "Ezuart22&";
+  const textPlane = "281095";
   const hash = bcrypt.hashSync(textPlane, 8);
   res.send(hash);
 };
