@@ -177,6 +177,9 @@ module.exports = (sequelize, Sequelize) => {
         },
         updatedAt: {
             type: Sequelize.DATE
+        },
+        pastedby: {
+            type: Sequelize.STRING
         }
 
     }, {
