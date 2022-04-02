@@ -25,6 +25,12 @@ module.exports = function(app) {
         "/api/mainch/giveEnterprises/",
         controller.giveEnterprisses
     );
+    //Give Cols
+
+    app.get(
+        "/api/mainch/giveColonies",
+        controller.giveColonies
+    );
     //Priory
     app.put(
         "/api/mainch/prioryData/:username",

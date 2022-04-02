@@ -1,4 +1,5 @@
 const db = require("../models");
+const Op = db.Sequelize.Op;
 const mainvr = db.mainvr;
 
 
@@ -46,7 +47,7 @@ exports.findByCurp = (req, res) => {
 exports.findByRange = (req, res) => {
     mainvr.findAll({
         attributes: ['id', 'calle','int','ext','colonia', 'cp', 'd', 'm', 's', 'l', 'mza','nombremunicipio'],
-        where: {aplica: 'si', precalif: 'false'},
+        where: {aplica: 'si', precalif: 'false', calle: {[Op.not]:null}},
         order: [
             ['id', 'ASC']
         ],

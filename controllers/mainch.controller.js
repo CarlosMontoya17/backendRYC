@@ -60,6 +60,21 @@ exports.giveEnterprisses = (req, res) => {
     });
 };
 
+//Give Cols
+exports.giveColonies = (req, res) => {
+    mainch.findAll({
+        attributes: [
+            [Sequelize.fn('DISTINCT', Sequelize.col('colonia')), 'colonia']
+        ]
+    }).then(data => {
+        res.send(data);
+    }).catch(err => {
+        res.status(500).send({
+            message: err
+        });
+    });
+};
+
 //Give Counts
 exports.verifyQuoter = (req, res) => {
     municipality = req.params.municipality;
