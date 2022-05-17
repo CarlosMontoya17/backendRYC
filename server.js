@@ -69,3 +69,4 @@ require('./routes/mainvr.routes')(app);
 require('./routes/mainch.routes')(app);
 require('./routes/mainnl.routes')(app);
 require('./routes/mainvr_mejoravit.routes')(app);
+require('./routes/mainch_mejoravit.routes')(app);

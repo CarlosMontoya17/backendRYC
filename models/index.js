@@ -39,7 +39,7 @@ db.inenl= require("../models/inenl.model.js")(sequelize, Sequelize);
 db.ineVeracruz2018= require("../models/ineVeracruz2018.model.js")(sequelize, Sequelize);
 db.mainvr = require("../models/mainvr.model.js")(sequelize, Sequelize);
 db.mainvr_mejoravit = require("../models/mainvr_mejoravit.model.js")(sequelize, Sequelize);
-
+db.mainch_mejoravit = require("../models/mainch_mejoravit.model.js")(sequelize, Sequelize);
 db.mainch = require("../models/mainch.model.js")(sequelize, Sequelize);
 db.mainnl = require("../models/mainnl.model.js")(sequelize, Sequelize);
 module.exports = db;
