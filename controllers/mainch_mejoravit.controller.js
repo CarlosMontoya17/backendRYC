@@ -6,7 +6,7 @@ exports.updateOrCreate = async (req, res) => {
     const { id_user, details, thirty_credit, thirty_month, twenty_credit, twenty_month, aplica } = req.body;
     const user = await mainch_mejoravit.findOne({where: { id_user: id_user}});
     if(user == null){
-       await mainvr_mejoravit.create({ 
+       await mainch_mejoravit.create({ 
             id_user: id_user, 
             details: details, 
             thirty_credit: thirty_credit,
@@ -29,7 +29,7 @@ exports.updateOrCreate = async (req, res) => {
         });
     }
     else{
-        await mainvr_mejoravit.update({
+        await mainch_mejoravit.update({
             details: details, 
             thirty_credit: thirty_credit,
             thirty_month: thirty_month, 
